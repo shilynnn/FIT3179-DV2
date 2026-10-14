@@ -1,0 +1,396 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol maps (small multiples): almond plantings and macadamia crop by growing region.",
+  "hconcat": [
+    {
+      "width": 470,
+      "height": 400,
+      "title": {
+        "text": "Almonds \u00b7 hectares planted (2026 mapping)",
+        "anchor": "start",
+        "fontSize": 15,
+        "font": "Fraunces",
+        "color": "#3b322b"
+      },
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -18,
+          -36
+        ],
+        "rotate": [
+          -134,
+          0
+        ]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "data/aus_states.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "aus_states"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "#e9e1d5",
+            "stroke": "#ffffff"
+          }
+        },
+        {
+          "data": {
+            "url": "data/growing_regions.csv",
+            "format": {
+              "parse": {
+                "value": "number",
+                "lon": "number",
+                "lat": "number",
+                "label_lon": "number",
+                "label_lat": "number"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.nut == 'Almonds'"
+            }
+          ],
+          "params": [
+            {
+              "name": "hl_Alm",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "fields": [
+                  "region"
+                ],
+                "clear": "pointerout"
+              }
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "color": "#C8702A",
+            "stroke": "white",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Hectares",
+              "scale": {
+                "domain": [
+                  0,
+                  25000
+                ],
+                "range": [
+                  0,
+                  1600
+                ]
+              },
+              "legend": {
+                "orient": "bottom-left",
+                "labelExpr": "format(datum.value, ',')",
+                "labelOverlap": false,
+                "symbolFillColor": "#C8702A",
+                "symbolStrokeColor": "white",
+                "values": [
+                  2000,
+                  10000,
+                  25000
+                ]
+              }
+            },
+            "opacity": {
+              "condition": {
+                "param": "hl_Alm",
+                "empty": true,
+                "value": 0.85
+              },
+              "value": 0.35
+            },
+            "tooltip": [
+              {
+                "field": "region",
+                "title": "Region"
+              },
+              {
+                "field": "state",
+                "title": "State"
+              },
+              {
+                "field": "value",
+                "type": "quantitative",
+                "format": ",.0f",
+                "title": "Hectares"
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "url": "data/growing_regions.csv",
+            "format": {
+              "parse": {
+                "value": "number",
+                "lon": "number",
+                "lat": "number",
+                "label_lon": "number",
+                "label_lat": "number"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.nut == 'Almonds' && isValid(datum.label_lon)"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontWeight": 600,
+            "fontSize": 11,
+            "color": "#3b322b"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "label_lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "label_lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "region"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 470,
+      "height": 400,
+      "title": {
+        "text": "Macadamias \u00b7 2025 crop",
+        "anchor": "start",
+        "fontSize": 15,
+        "font": "Fraunces",
+        "color": "#3b322b"
+      },
+      "projection": {
+        "type": "conicEqualArea",
+        "parallels": [
+          -18,
+          -36
+        ],
+        "rotate": [
+          -134,
+          0
+        ]
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "data/aus_states.topojson",
+            "format": {
+              "type": "topojson",
+              "feature": "aus_states"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "#e9e1d5",
+            "stroke": "#ffffff"
+          }
+        },
+        {
+          "data": {
+            "url": "data/growing_regions.csv",
+            "format": {
+              "parse": {
+                "value": "number",
+                "lon": "number",
+                "lat": "number",
+                "label_lon": "number",
+                "label_lat": "number"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.nut == 'Macadamias'"
+            }
+          ],
+          "params": [
+            {
+              "name": "hl_Mac",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "fields": [
+                  "region"
+                ],
+                "clear": "pointerout"
+              }
+            }
+          ],
+          "mark": {
+            "type": "circle",
+            "color": "#2E7D6B",
+            "stroke": "white",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Tonnes in-shell",
+              "scale": {
+                "domain": [
+                  0,
+                  28000
+                ],
+                "range": [
+                  0,
+                  1600
+                ]
+              },
+              "legend": {
+                "orient": "bottom-left",
+                "labelExpr": "format(datum.value, ',')",
+                "labelOverlap": false,
+                "symbolFillColor": "#2E7D6B",
+                "symbolStrokeColor": "white",
+                "values": [
+                  1000,
+                  8000,
+                  28000
+                ]
+              }
+            },
+            "opacity": {
+              "condition": {
+                "param": "hl_Mac",
+                "empty": true,
+                "value": 0.85
+              },
+              "value": 0.35
+            },
+            "tooltip": [
+              {
+                "field": "region",
+                "title": "Region"
+              },
+              {
+                "field": "state",
+                "title": "State"
+              },
+              {
+                "field": "value",
+                "type": "quantitative",
+                "format": ",.0f",
+                "title": "Tonnes in-shell"
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "url": "data/growing_regions.csv",
+            "format": {
+              "parse": {
+                "value": "number",
+                "lon": "number",
+                "lat": "number",
+                "label_lon": "number",
+                "label_lat": "number"
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum.nut == 'Macadamias' && isValid(datum.label_lon)"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontWeight": 600,
+            "fontSize": 11,
+            "color": "#3b322b"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "label_lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "label_lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "region"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 30,
+  "resolve": {
+    "scale": {
+      "size": "independent"
+    },
+    "legend": {
+      "size": "independent"
+    }
+  },
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

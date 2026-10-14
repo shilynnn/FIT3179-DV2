@@ -1,0 +1,195 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope graph: macadamia crop by region, 2024 vs 2025 (log scale).",
+  "data": {
+    "url": "data/macadamia_regions_2024_2025.csv",
+    "format": {
+      "parse": {
+        "t2024": "number",
+        "t2025": "number"
+      }
+    }
+  },
+  "width": 300,
+  "height": 340,
+  "transform": [
+    {
+      "fold": [
+        "t2024",
+        "t2025"
+      ],
+      "as": [
+        "yr",
+        "tonnes"
+      ]
+    },
+    {
+      "calculate": "datum.yr == 't2024' ? '2024' : '2025'",
+      "as": "Year"
+    },
+    {
+      "calculate": "datum.region == 'NSW Northern Rivers' ? 'drop' : datum.region == 'Bundaberg' ? 'rise' : 'other'",
+      "as": "focus"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "orient": "top",
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": 700,
+        "labelFontSize": 13
+      },
+      "scale": {
+        "padding": 0.1
+      }
+    },
+    "y": {
+      "field": "tonnes",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [
+          200,
+          35000
+        ]
+      },
+      "title": "Tonnes in-shell (log scale)",
+      "axis": {
+        "format": "~s",
+        "grid": false,
+        "values": [
+          250,
+          1000,
+          5000,
+          25000
+        ]
+      }
+    },
+    "detail": {
+      "field": "region"
+    },
+    "color": {
+      "field": "focus",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": [
+          "drop",
+          "rise",
+          "other"
+        ],
+        "range": [
+          "#A43F4C",
+          "#2E7D6B",
+          "#b9ada0"
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 50,
+        "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "Year"
+          },
+          {
+            "field": "tonnes",
+            "type": "quantitative",
+            "format": ",.0f",
+            "title": "Tonnes in-shell"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == '2025'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11
+      },
+      "encoding": {
+        "text": {
+          "field": "region"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == '2024' && datum.focus != 'other'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "fontSize": 11,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "tonnes",
+          "type": "quantitative",
+          "format": ",.0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

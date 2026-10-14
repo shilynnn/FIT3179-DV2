@@ -1,0 +1,121 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waffle chart: each square is 1% of the $1.23 billion farm-gate value of nuts, 2023/24.",
+  "data": {
+    "url": "data/waffle_cells.csv"
+  },
+  "width": 260,
+  "height": 260,
+  "params": [
+    {
+      "name": "nutPick",
+      "select": {
+        "type": "point",
+        "fields": [
+          "nut"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "square",
+    "size": 380,
+    "opacity": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "sort": "descending"
+    },
+    "color": {
+      "field": "nut",
+      "type": "nominal",
+      "title": "Each square = 1% of value",
+      "scale": {
+        "domain": [
+          "Almonds",
+          "Macadamias",
+          "Pistachios",
+          "Walnuts",
+          "Pecans",
+          "Chestnuts",
+          "Hazelnuts & other"
+        ],
+        "range": [
+          "#C8702A",
+          "#2E7D6B",
+          "#93A83A",
+          "#8B6A43",
+          "#A43F4C",
+          "#4E6E8E",
+          "#B9B0A5"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "symbolType": "square"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "nutPick",
+        "value": 1
+      },
+      "value": 0.2
+    },
+    "tooltip": [
+      {
+        "field": "nut",
+        "title": "Nut"
+      },
+      {
+        "field": "value_m",
+        "type": "quantitative",
+        "title": "Value ($ million)",
+        "format": ",.1f"
+      },
+      {
+        "field": "share_pct",
+        "type": "quantitative",
+        "title": "Share (%)"
+      }
+    ]
+  },
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

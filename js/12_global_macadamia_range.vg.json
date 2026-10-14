@@ -1,0 +1,150 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Range plot: 2025 macadamia supply and 2030 forecast range by country.",
+  "data": {
+    "url": "data/macadamia_global.csv",
+    "format": {
+      "parse": {
+        "t2025": "number",
+        "low2030": "number",
+        "high2030": "number"
+      }
+    }
+  },
+  "width": 440,
+  "height": 280,
+  "encoding": {
+    "y": {
+      "field": "country",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "high2030",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "height": 12,
+        "cornerRadius": 6
+      },
+      "encoding": {
+        "x": {
+          "field": "low2030",
+          "type": "quantitative",
+          "title": "Tonnes in-shell",
+          "axis": {
+            "format": "~s"
+          },
+          "scale": {
+            "domain": [
+              0,
+              140000
+            ]
+          }
+        },
+        "x2": {
+          "field": "high2030"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.country == 'Australia'",
+            "value": "#8fc2b5"
+          },
+          "value": "#d9cfc2"
+        },
+        "tooltip": [
+          {
+            "field": "country"
+          },
+          {
+            "field": "low2030",
+            "type": "quantitative",
+            "format": ",",
+            "title": "2030 low"
+          },
+          {
+            "field": "high2030",
+            "type": "quantitative",
+            "format": ",",
+            "title": "2030 high"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "isValid(datum.t2025) && datum.t2025 > 0"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "shape": "diamond",
+        "filled": true,
+        "size": 110,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "t2025",
+          "type": "quantitative"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.country == 'Australia'",
+            "value": "#2E7D6B"
+          },
+          "value": "#3b322b"
+        },
+        "tooltip": [
+          {
+            "field": "country"
+          },
+          {
+            "field": "t2025",
+            "type": "quantitative",
+            "format": ",",
+            "title": "2025 supply"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

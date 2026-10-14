@@ -1,0 +1,215 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Almonds",
+    "destination": "China",
+    "tonnes": 34200
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      142.2,
+      -34.2
+     ],
+     [
+      104.2,
+      35.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Almonds",
+    "destination": "India",
+    "tonnes": 21128
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      142.2,
+      -34.2
+     ],
+     [
+      78.9,
+      22.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Almonds",
+    "destination": "Turkey",
+    "tonnes": 10545
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      142.2,
+      -34.2
+     ],
+     [
+      35.2,
+      39.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Almonds",
+    "destination": "Vietnam",
+    "tonnes": 10428
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      142.2,
+      -34.2
+     ],
+     [
+      106.3,
+      16.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Almonds",
+    "destination": "Spain",
+    "tonnes": 9914
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      142.2,
+      -34.2
+     ],
+     [
+      -3.7,
+      40.4
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Macadamias",
+    "destination": "Vietnam",
+    "tonnes": 3455
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      152.4,
+      -24.9
+     ],
+     [
+      106.3,
+      16.0
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Macadamias",
+    "destination": "China",
+    "tonnes": 2608
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      152.4,
+      -24.9
+     ],
+     [
+      104.2,
+      35.9
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Macadamias",
+    "destination": "Japan",
+    "tonnes": 1421
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      152.4,
+      -24.9
+     ],
+     [
+      138.3,
+      36.2
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Macadamias",
+    "destination": "South Korea",
+    "tonnes": 1416
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      152.4,
+      -24.9
+     ],
+     [
+      127.8,
+      36.5
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "nut": "Macadamias",
+    "destination": "United States",
+    "tonnes": 877
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      152.4,
+      -24.9
+     ],
+     [
+      -98.5,
+      39.5
+     ]
+    ]
+   }
+  }
+ ]
+}

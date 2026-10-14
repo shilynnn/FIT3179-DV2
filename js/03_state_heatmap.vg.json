@@ -1,0 +1,165 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap: share of each nut's national production grown in each state, 2023/24.",
+  "data": {
+    "url": "data/state_nut_production_2024.csv",
+    "format": {
+      "parse": {
+        "tonnes": "number",
+        "pct_of_national": "number"
+      }
+    }
+  },
+  "width": 400,
+  "height": 260,
+  "transform": [
+    {
+      "calculate": "{'New South Wales':'NSW','Victoria':'VIC','Queensland':'QLD','South Australia':'SA','Western Australia':'WA','Tasmania':'TAS'}[datum.state]",
+      "as": "abbr"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "abbr",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "NSW",
+        "VIC",
+        "QLD",
+        "SA",
+        "WA",
+        "TAS"
+      ],
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontWeight": 600
+      }
+    },
+    "y": {
+      "field": "nut",
+      "type": "nominal",
+      "title": null,
+      "sort": [
+        "Almonds",
+        "Macadamias",
+        "Walnuts",
+        "Pistachios",
+        "Pecans",
+        "Hazelnuts",
+        "Chestnuts"
+      ],
+      "axis": {
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#fffaf3",
+        "strokeWidth": 2,
+        "cornerRadius": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "pct_of_national",
+          "type": "quantitative",
+          "title": "% of national crop",
+          "scale": {
+            "scheme": "orangered",
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "gradientLength": 220,
+            "direction": "horizontal"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "nut",
+            "title": "Nut"
+          },
+          {
+            "field": "state",
+            "title": "State"
+          },
+          {
+            "field": "tonnes",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Tonnes"
+          },
+          {
+            "field": "unit",
+            "title": "Unit"
+          },
+          {
+            "field": "pct_of_national",
+            "type": "quantitative",
+            "title": "% of national crop"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "pct_of_national",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.pct_of_national > 45",
+            "value": "white"
+          },
+          "value": "#3b322b"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

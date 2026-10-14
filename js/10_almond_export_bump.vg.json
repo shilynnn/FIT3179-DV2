@@ -1,0 +1,210 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart: rank of Australia's top five almond export destinations, 2019/20 to 2022/23.",
+  "data": {
+    "url": "data/almond_export_destinations.csv",
+    "format": {
+      "parse": {
+        "year": "number",
+        "tonnes": "number"
+      }
+    }
+  },
+  "width": 420,
+  "height": 250,
+  "transform": [
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "tonnes",
+          "order": "descending"
+        }
+      ],
+      "groupby": [
+        "year"
+      ]
+    },
+    {
+      "calculate": "(datum.year - 1) + '/' + substring(datum.year + '', 2, 4)",
+      "as": "fy"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "fy",
+      "type": "ordinal",
+      "title": "Financial year",
+      "axis": {
+        "labelAngle": 0,
+        "orient": "top",
+        "domain": false,
+        "ticks": false
+      },
+      "scale": {
+        "padding": 1.2
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "ordinal",
+      "title": "Rank",
+      "axis": {
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "color": {
+      "field": "country",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": [
+          "China",
+          "India",
+          "Vietnam",
+          "Turkey",
+          "Spain",
+          "Germany"
+        ],
+        "range": [
+          "#A43F4C",
+          "#C8702A",
+          "#2E7D6B",
+          "#6E5AA0",
+          "#4E6E8E",
+          "#8B6A43"
+        ]
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "cty",
+        "empty": true,
+        "value": 1
+      },
+      "value": 0.2
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": false
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "cty",
+          "select": {
+            "type": "point",
+            "fields": [
+              "country"
+            ],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 160,
+        "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "country",
+            "title": "Destination"
+          },
+          {
+            "field": "fy",
+            "title": "Year"
+          },
+          {
+            "field": "rank",
+            "title": "Rank"
+          },
+          {
+            "field": "tonnes",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Tonnes"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2023"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "country"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2020"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "country"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

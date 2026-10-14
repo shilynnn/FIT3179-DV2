@@ -1,0 +1,308 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Almond production (line) aligned above hectares planted by year (bars).",
+  "data": {
+    "url": "data/almond_production.csv",
+    "format": {
+      "parse": {
+        "year": "number",
+        "kernel_tonnes": "number"
+      }
+    }
+  },
+  "vconcat": [
+    {
+      "width": 650,
+      "height": 260,
+      "layer": [
+        {
+          "mark": {
+            "type": "line",
+            "color": "#C8702A",
+            "strokeWidth": 3,
+            "interpolate": "monotone"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "kernel_tonnes",
+              "type": "quantitative"
+            }
+          }
+        },
+        {
+          "params": [
+            {
+              "name": "hover",
+              "select": {
+                "type": "point",
+                "on": "pointerover",
+                "nearest": true,
+                "clear": "pointerout"
+              }
+            }
+          ],
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "color": "#C8702A",
+            "size": 60
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "kernel_tonnes",
+              "type": "quantitative"
+            },
+            "size": {
+              "condition": {
+                "param": "hover",
+                "empty": false,
+                "value": 160
+              },
+              "value": 40
+            },
+            "tooltip": [
+              {
+                "field": "year",
+                "title": "Crop year"
+              },
+              {
+                "field": "kernel_tonnes",
+                "type": "quantitative",
+                "title": "Kernel tonnes",
+                "format": ","
+              },
+              {
+                "field": "source",
+                "title": "Source"
+              }
+            ]
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "year": 2023,
+                "kernel_tonnes": 110707,
+                "label": "2023: crop falls 21%"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "dy": 18,
+            "fontWeight": 600,
+            "color": "#3b322b"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "kernel_tonnes",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "year": 2013,
+                "kernel_tonnes": 73361,
+                "label": "2006\u201307 plantings start bearing"
+              },
+              {
+                "year": 2025,
+                "kernel_tonnes": 163148,
+                "label": "Record 163,148 t"
+              }
+            ]
+          },
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -8,
+            "dy": -12,
+            "fontWeight": 600,
+            "color": "#3b322b"
+          },
+          "encoding": {
+            "x": {
+              "field": "year",
+              "type": "ordinal"
+            },
+            "y": {
+              "field": "kernel_tonnes",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "label"
+            }
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "scale": {
+            "domain": [
+              2006,
+              2007,
+              2008,
+              2009,
+              2010,
+              2011,
+              2012,
+              2013,
+              2014,
+              2015,
+              2016,
+              2017,
+              2018,
+              2019,
+              2020,
+              2021,
+              2022,
+              2023,
+              2024,
+              2025
+            ]
+          },
+          "axis": {
+            "labelAngle": 0,
+            "labelExpr": "datum.value % 2 == 1 ? datum.label : ''"
+          }
+        },
+        "y": {
+          "field": "kernel_tonnes",
+          "type": "quantitative",
+          "title": "Almond crop (kernel tonnes)",
+          "axis": {
+            "format": "~s",
+            "tickCount": 5
+          }
+        }
+      }
+    },
+    {
+      "width": 650,
+      "height": 110,
+      "data": {
+        "url": "data/almond_plantings_by_year.csv",
+        "format": {
+          "parse": {
+            "year_planted": "number",
+            "hectares": "number"
+          }
+        }
+      },
+      "mark": {
+        "type": "bar",
+        "color": "#E3B48A",
+        "cornerRadiusEnd": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "year_planted",
+          "type": "ordinal",
+          "title": null,
+          "scale": {
+            "domain": [
+              2006,
+              2007,
+              2008,
+              2009,
+              2010,
+              2011,
+              2012,
+              2013,
+              2014,
+              2015,
+              2016,
+              2017,
+              2018,
+              2019,
+              2020,
+              2021,
+              2022,
+              2023,
+              2024,
+              2025
+            ]
+          },
+          "axis": {
+            "labels": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "hectares",
+          "type": "quantitative",
+          "title": "Hectares planted",
+          "axis": {
+            "format": "~s",
+            "tickCount": 3
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year_planted",
+            "title": "Year planted"
+          },
+          {
+            "field": "hectares",
+            "type": "quantitative",
+            "format": ",.0f",
+            "title": "Hectares"
+          }
+        ]
+      }
+    }
+  ],
+  "spacing": 8,
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

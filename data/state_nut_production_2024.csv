@@ -1,0 +1,31 @@
+nut,state,tonnes,pct_of_national,unit
+Almonds,Victoria,68953,44.9,kernel t
+Almonds,South Australia,46076,30.0,kernel t
+Almonds,New South Wales,37686,24.6,kernel t
+Almonds,Western Australia,785,0.5,kernel t
+Macadamias,Queensland,36612,67.9,in-shell t
+Macadamias,New South Wales,17329,32.1,in-shell t
+Walnuts,New South Wales,7800,65.0,in-shell t
+Walnuts,Tasmania,2640,22.0,in-shell t
+Walnuts,Victoria,1080,9.0,in-shell t
+Walnuts,Western Australia,360,3.0,in-shell t
+Walnuts,South Australia,120,1.0,in-shell t
+Pistachios,New South Wales,1858,41.8,in-shell t
+Pistachios,Victoria,1635,36.8,in-shell t
+Pistachios,South Australia,912,20.5,in-shell t
+Pistachios,Western Australia,45,1.0,in-shell t
+Pecans,New South Wales,1173,84.0,kernel t
+Pecans,Queensland,168,12.0,kernel t
+Pecans,Western Australia,42,3.0,kernel t
+Pecans,South Australia,14,1.0,kernel t
+Hazelnuts,Victoria,680,50.0,t
+Hazelnuts,New South Wales,462,34.0,t
+Hazelnuts,Tasmania,163,12.0,t
+Hazelnuts,Western Australia,27,2.0,t
+Hazelnuts,South Australia,27,2.0,t
+Chestnuts,Victoria,755,70.0,t
+Chestnuts,New South Wales,162,15.0,t
+Chestnuts,South Australia,54,5.0,t
+Chestnuts,Tasmania,54,5.0,t
+Chestnuts,Western Australia,43,4.0,t
+Chestnuts,Queensland,11,1.0,t

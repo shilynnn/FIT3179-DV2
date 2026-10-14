@@ -1,0 +1,328 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Diverging (butterfly) bar chart: share of Australian supply imported vs share of production exported, 2023/24.",
+  "data": {
+    "url": "data/trade_reliance_2024.csv",
+    "format": {
+      "parse": {
+        "pct_supply_imported": "number",
+        "pct_production_exported": "number"
+      }
+    }
+  },
+  "hconcat": [
+    {
+      "width": 280,
+      "height": 230,
+      "title": {
+        "text": "% of what Australians eat that is imported",
+        "fontSize": 13,
+        "anchor": "end",
+        "color": "#9c4f5a"
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#B4656F",
+            "cornerRadiusEnd": 3
+          },
+          "encoding": {
+            "x": {
+              "field": "pct_supply_imported",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": [
+                  0,
+                  100
+                ],
+                "reverse": true
+              },
+              "axis": {
+                "format": "d",
+                "values": [
+                  0,
+                  50,
+                  100
+                ]
+              }
+            },
+            "y": {
+              "field": "nut",
+              "type": "nominal",
+              "sort": [
+                "Almonds",
+                "Macadamias",
+                "Walnuts",
+                "Pistachios",
+                "Pecans",
+                "Hazelnuts",
+                "Chestnuts"
+              ],
+              "title": null,
+              "axis": null
+            },
+            "tooltip": [
+              {
+                "field": "nut"
+              },
+              {
+                "field": "imports_t",
+                "format": ",",
+                "type": "quantitative",
+                "title": "Imports (t)"
+              },
+              {
+                "field": "domestic_supply_t",
+                "type": "quantitative",
+                "format": ",",
+                "title": "Domestic supply (t)"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "dx": -4,
+            "fontSize": 11
+          },
+          "encoding": {
+            "x": {
+              "field": "pct_supply_imported",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  100
+                ],
+                "reverse": true
+              }
+            },
+            "y": {
+              "field": "nut",
+              "type": "nominal",
+              "sort": [
+                "Almonds",
+                "Macadamias",
+                "Walnuts",
+                "Pistachios",
+                "Pecans",
+                "Hazelnuts",
+                "Chestnuts"
+              ],
+              "title": null,
+              "axis": null
+            },
+            "text": {
+              "field": "pct_supply_imported",
+              "type": "quantitative",
+              "format": ".0f"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": 70,
+      "height": 230,
+      "view": {
+        "stroke": null
+      },
+      "mark": {
+        "type": "text",
+        "fontWeight": 700,
+        "fontSize": 12
+      },
+      "encoding": {
+        "y": {
+          "field": "nut",
+          "type": "nominal",
+          "sort": [
+            "Almonds",
+            "Macadamias",
+            "Walnuts",
+            "Pistachios",
+            "Pecans",
+            "Hazelnuts",
+            "Chestnuts"
+          ],
+          "title": null,
+          "axis": null
+        },
+        "text": {
+          "field": "nut"
+        },
+        "color": {
+          "field": "nut",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Almonds",
+              "Macadamias",
+              "Walnuts",
+              "Pistachios",
+              "Pecans",
+              "Hazelnuts",
+              "Chestnuts"
+            ],
+            "range": [
+              "#C8702A",
+              "#2E7D6B",
+              "#8B6A43",
+              "#93A83A",
+              "#A43F4C",
+              "#6E5AA0",
+              "#4E6E8E"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "width": 280,
+      "height": 230,
+      "title": {
+        "text": "% of Australian production that is exported",
+        "fontSize": 13,
+        "anchor": "start",
+        "color": "#2b5f80"
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#33658A",
+            "cornerRadiusEnd": 3
+          },
+          "encoding": {
+            "x": {
+              "field": "pct_production_exported",
+              "type": "quantitative",
+              "title": null,
+              "scale": {
+                "domain": [
+                  0,
+                  100
+                ]
+              },
+              "axis": {
+                "format": "d",
+                "values": [
+                  0,
+                  50,
+                  100
+                ]
+              }
+            },
+            "y": {
+              "field": "nut",
+              "type": "nominal",
+              "sort": [
+                "Almonds",
+                "Macadamias",
+                "Walnuts",
+                "Pistachios",
+                "Pecans",
+                "Hazelnuts",
+                "Chestnuts"
+              ],
+              "title": null,
+              "axis": null
+            },
+            "tooltip": [
+              {
+                "field": "nut"
+              },
+              {
+                "field": "exports_t",
+                "type": "quantitative",
+                "format": ",",
+                "title": "Exports (t)"
+              },
+              {
+                "field": "production_t",
+                "type": "quantitative",
+                "format": ",",
+                "title": "Production (t)"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 4,
+            "fontSize": 11
+          },
+          "encoding": {
+            "x": {
+              "field": "pct_production_exported",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  100
+                ]
+              }
+            },
+            "y": {
+              "field": "nut",
+              "type": "nominal",
+              "sort": [
+                "Almonds",
+                "Macadamias",
+                "Walnuts",
+                "Pistachios",
+                "Pecans",
+                "Hazelnuts",
+                "Chestnuts"
+              ],
+              "title": null,
+              "axis": null
+            },
+            "text": {
+              "field": "pct_production_exported",
+              "type": "quantitative",
+              "format": ".0f"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 0,
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

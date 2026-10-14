@@ -1,0 +1,175 @@
+/* ---------- Colour tokens ---------- */
+:root {
+  --paper: #fbf7f1;
+  --ink: #3b322b;
+  --muted: #7d7065;
+  --rule: #e6dccf;
+  --almond: #C8702A;
+  --maca: #2E7D6B;
+  --hero: #2f2620;
+}
+
+/* ---------- Base typography ---------- */
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Fraunces", Georgia, serif;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.2rem 0 1.2rem;
+}
+
+h3.chart-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.4rem;
+}
+
+p { margin: 0 0 0.9rem; }
+
+a { color: var(--almond); }
+
+strong { font-weight: 700; }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--hero);
+  color: #f6eee3;
+  padding: 64px 0 48px;
+}
+
+.hero h1 {
+  color: #fff8ef;
+  font-size: 3rem;
+  font-weight: 800;
+  max-width: 820px;
+  margin: 0.3rem 0 1rem;
+}
+
+.hero .lede {
+  font-size: 1.2rem;
+  max-width: 680px;
+  color: #e7dccd;
+}
+
+.kicker, .chapter {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.kicker { color: #e3b48a; }
+.chapter { color: var(--almond); }
+
+.kpis { margin-top: 32px; }
+
+.kpi {
+  border-left: 3px solid #6b5848;
+  padding: 4px 16px;
+  margin: 8px 0;
+}
+
+.kpi .num {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff8ef;
+}
+
+.kpi .num.almond { color: #f0a464; }
+.kpi .num.maca { color: #7fc7b2; }
+
+.kpi .lbl {
+  font-size: 0.9rem;
+  color: #cbbcaa;
+}
+
+/* ---------- Sections ---------- */
+section {
+  padding: 56px 0 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.text {
+  max-width: 34em;          /* about 60-70 characters per line */
+  padding: 1.2rem 8px 0 24px;
+}
+
+.conclusion { padding-top: 0; }
+
+.vis {
+  width: 100%;
+  min-height: 120px;
+}
+
+.vis.center { display: flex; justify-content: center; }
+
+.note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  max-width: 46em;
+  margin-top: 4px;
+}
+
+.center-text { text-align: center; margin-left: auto; margin-right: auto; }
+
+.tag {
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.tag.almond { background: var(--almond); }
+.tag.maca { background: var(--maca); }
+
+/* Vega-Lite bound inputs (radio buttons for the flow map) */
+.vega-bindings {
+  font-size: 0.9rem;
+  margin: 6px 0 0;
+}
+
+.vega-bind label { margin-right: 10px; }
+
+/* ---------- Footer ---------- */
+footer {
+  background: #efe6da;
+  padding: 32px 0 40px;
+  font-size: 0.85rem;
+  color: #5a4e44;
+}
+
+footer h4 {
+  font-size: 1rem;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.sources { padding-left: 1.1rem; margin: 0; }
+.sources li { margin-bottom: 0.35rem; }
+
+@media (max-width: 1024px) {
+  .text { padding-left: 0; }
+  .hero h1 { font-size: 2.3rem; }
+}

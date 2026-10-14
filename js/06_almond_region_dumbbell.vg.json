@@ -1,0 +1,182 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dumbbell chart: almond hectares by region, 2023 vs 2026 mapping.",
+  "data": {
+    "url": "data/almond_region_change.csv",
+    "format": {
+      "parse": {
+        "ha_2023": "number",
+        "ha_2026": "number"
+      }
+    }
+  },
+  "width": 270,
+  "height": 220,
+  "transform": [
+    {
+      "calculate": "datum.ha_2026 - datum.ha_2023",
+      "as": "change"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "title": null,
+      "sort": {
+        "field": "ha_2026",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelLimit": 200
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#d9cfc2",
+        "strokeWidth": 4
+      },
+      "encoding": {
+        "x": {
+          "field": "ha_2023",
+          "type": "quantitative",
+          "title": "Hectares of almond orchards",
+          "axis": {
+            "format": "~s",
+            "values": [
+              0,
+              10000,
+              20000,
+              30000
+            ]
+          },
+          "scale": {
+            "domain": [
+              0,
+              36000
+            ]
+          }
+        },
+        "x2": {
+          "field": "ha_2026"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "fold": [
+            "ha_2023",
+            "ha_2026"
+          ],
+          "as": [
+            "yr",
+            "ha"
+          ]
+        },
+        {
+          "calculate": "datum.yr == 'ha_2023' ? '2023' : '2026'",
+          "as": "Year"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 120,
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "ha",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Year",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "2023",
+              "2026"
+            ],
+            "range": [
+              "#bfb3a3",
+              "#C8702A"
+            ]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "title": null
+          }
+        },
+        "tooltip": [
+          {
+            "field": "region",
+            "title": "Region"
+          },
+          {
+            "field": "Year"
+          },
+          {
+            "field": "ha",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Hectares"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "color": "#8a7e72"
+      },
+      "encoding": {
+        "x": {
+          "field": "ha_2026",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "change",
+          "type": "quantitative",
+          "format": "+,"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

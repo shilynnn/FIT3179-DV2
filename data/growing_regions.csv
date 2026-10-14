@@ -1,0 +1,16 @@
+region,nut,state,lon,lat,value,unit,label_lon,label_lat
+Victorian Sunraysia,Almonds,VIC,142.16,-34.19,25690,hectares planted,137.2,-37.6
+NSW Sunraysia,Almonds,NSW,142.95,-34.55,8430,hectares planted,,
+Riverina,Almonds,NSW,145.6,-34.3,19030,hectares planted,146.6,-33.3
+Riverland,Almonds,SA,140.6,-34.2,14370,hectares planted,133.2,-32.2
+Goulburn Valley & other,Almonds,VIC,145.4,-36.38,2000,hectares planted,,
+Adelaide Plains,Almonds,SA,138.55,-34.6,449,hectares planted,,
+Western Australia,Almonds,WA,115.95,-31.4,818,hectares planted,,
+Bundaberg,Macadamias,QLD,152.35,-24.87,27924.7,tonnes in-shell,154.0,-24.4
+NSW Northern Rivers,Macadamias,NSW,153.28,-28.81,7741.3,tonnes in-shell,154.2,-28.9
+South East QLD,Macadamias,QLD,152.95,-26.85,2630.7,tonnes in-shell,154.2,-26.7
+Gympie,Macadamias,QLD,152.67,-26.19,1836.2,tonnes in-shell,,
+Maryborough,Macadamias,QLD,152.7,-25.54,1227.3,tonnes in-shell,,
+NSW Mid North Coast,Macadamias,NSW,152.8,-31.3,1122.4,tonnes in-shell,,
+QLD Tropical,Macadamias,QLD,145.5,-17.3,1037.8,tonnes in-shell,,
+Clarence Valley,Macadamias,NSW,152.93,-29.69,248.4,tonnes in-shell,,

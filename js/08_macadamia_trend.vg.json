@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart: Australian macadamia crop 2021\u20132025 with industry forecast for 2030.",
+  "data": {
+    "url": "data/macadamia_crop.csv"
+  },
+  "width": 330,
+  "height": 260,
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "axis": {
+        "format": "d",
+        "values": [
+          2021,
+          2023,
+          2025,
+          2027,
+          2030
+        ]
+      },
+      "scale": {
+        "domain": [
+          2021,
+          2030
+        ]
+      }
+    },
+    "y": {
+      "field": "inshell_tonnes",
+      "type": "quantitative",
+      "title": "Tonnes in-shell (3.5% moisture)",
+      "axis": {
+        "format": "~s",
+        "tickCount": 5
+      },
+      "scale": {
+        "domain": [
+          0,
+          90000
+        ]
+      }
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.status == 'actual'"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#2E7D6B",
+        "strokeWidth": 3
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year >= 2025"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#2E7D6B",
+        "strokeDash": [
+          5,
+          4
+        ],
+        "strokeWidth": 2
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "color": "#2E7D6B",
+        "size": 60,
+        "opacity": 1
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "inshell_tonnes",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Tonnes"
+          },
+          {
+            "field": "status",
+            "title": "Status"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2025,
+            "inshell_tonnes": 43800,
+            "label": "2025: lowest in years"
+          },
+          {
+            "year": 2030,
+            "inshell_tonnes": 85440,
+            "label": "Forecast 85,440 t"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dy": 18,
+        "dx": 4,
+        "fontWeight": 600,
+        "color": "#3b322b"
+      },
+      "encoding": {
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+  "config": {
+    "font": "Source Sans 3",
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44",
+      "gridColor": "#ece3d6",
+      "domainColor": "#c9bcab",
+      "tickColor": "#c9bcab"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#5a4e44",
+      "titleColor": "#5a4e44"
+    },
+    "text": {
+      "font": "Source Sans 3",
+      "fontSize": 12,
+      "fill": "#3b322b"
+    }
+  }
+}

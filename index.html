@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Australia's Nut Boom | FIT3179 Data Visualisation 2</title>
+
+  <!-- Vega, Vega-Lite and Vega-Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+
+  <!-- Pure.css grid -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
+
+  <!-- Google Fonts: Fraunces (headings) + Source Sans 3 (body and charts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ============================== HERO ============================== -->
+  <header class="hero">
+    <div class="page">
+      <p class="kicker">Food, Agriculture &amp; Lifestyle · Australia</p>
+      <h1>Shell Shock: How Australia Became a Nut Superpower</h1>
+      <p class="lede">In less than two decades, almonds and macadamias have turned the Murray River and the
+        Queensland coast into one of the world's great nut bowls. Where are they grown, who buys them, and can the
+        boom survive drought, floods and global competition?</p>
+
+      <div class="pure-g kpis">
+        <div class="pure-u-1-2 pure-u-md-1-4"><div class="kpi"><span class="num almond">163,148 t</span>
+          <span class="lbl">Record almond crop, 2025 (kernel)</span></div></div>
+        <div class="pure-u-1-2 pure-u-md-1-4"><div class="kpi"><span class="num">$1.23 b</span>
+          <span class="lbl">Farm-gate value of all nuts, 2023/24</span></div></div>
+        <div class="pure-u-1-2 pure-u-md-1-4"><div class="kpi"><span class="num">$1.03 b</span>
+          <span class="lbl">Nut exports, 2023/24</span></div></div>
+        <div class="pure-u-1-2 pure-u-md-1-4"><div class="kpi"><span class="num maca">72%</span>
+          <span class="lbl">Of the 2025 macadamia crop sent overseas</span></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- ============================== 1. GROWTH ============================== -->
+    <section>
+      <p class="chapter">Chapter 1</p>
+      <h2>Planted in the 2000s, harvested today</h2>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-3">
+          <h3 class="chart-title">The almond crop has more than quadrupled since 2009</h3>
+          <div id="vis1" class="vis"></div>
+          <p class="note">Top: almond production, kernel tonnes. Bottom: hectares of new orchards planted each year. Hover the line for exact values.</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-3">
+          <div class="text">
+            <p>An almond tree takes roughly five to seven years to reach full production. The planting waves of
+              <strong>2006–07</strong> and <strong>2016–17</strong> (bottom bars) are the reason the crop jumped in
+              2013 and again after 2019.</p>
+            <p>Production is not a straight line, though. A poor 2023 season cut the crop by a fifth before it
+              bounced back to a <strong>record 163,148 tonnes in 2025</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-3">
+          <div class="text">
+            <h3 class="chart-title">Almonds earn seven of every ten nut dollars</h3>
+            <p>Australia commercially grows seven tree nuts, but the industry is lopsided. Almonds
+              (<span class="tag almond">71%</span>) and macadamias (<span class="tag maca">16%</span>) together make
+              up close to nine-tenths of the $1.23 billion farm-gate value.</p>
+            <p>Click a nut in the legend to highlight its squares.</p>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-2-3">
+          <div id="vis2" class="vis center"></div>
+          <p class="note center-text">Each square = 1% of the farm-gate value of Australian nuts, year ending June 2024.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 2. WHERE ============================== -->
+    <section>
+      <p class="chapter">Chapter 2</p>
+      <h2>Two nut belts: the Murray and the sub-tropical coast</h2>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">NSW grows every commercial nut</h3>
+          <div id="vis4" class="vis"></div>
+          <p class="note">Number of nut crops with recorded production in each state, 2023/24. Grey: none recorded.</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">…but each nut has a home state</h3>
+          <div id="vis3" class="vis"></div>
+          <p class="note">Share (%) of each nut's national production grown in each state, 2023/24.</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h3 class="chart-title">Almonds follow the river; macadamias follow the coast</h3>
+          <div id="vis5" class="vis"></div>
+          <p class="note">Circle area is proportional to orchard area (almonds) or harvest (macadamias). Hover a circle for details.</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">New almond orchards are moving east</h3>
+          <div id="vis6" class="vis"></div>
+          <p class="note">Hectares of almond orchards, 2023 vs 2026 mapping. Labels show the change.</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <div class="text">
+            <p>Almonds need hot, dry summers and reliable irrigation, so nearly all orchards sit along the Murray
+              River system, in <strong>Sunraysia</strong>, the <strong>Riverina</strong> and South Australia's
+              <strong>Riverland</strong>.</p>
+            <p>Since 2023 the national orchard area has grown by around 9,500 hectares. Most of that growth is in the
+              Riverina and Riverland, while Victorian Sunraysia, the traditional heartland, has shrunk slightly.</p>
+            <p>Macadamias, native to the rainforests of south-east Queensland and northern NSW, need warm, humid
+              weather. <strong>Bundaberg</strong> alone harvested almost two-thirds of the 2025 crop.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. WEATHER ============================== -->
+    <section>
+      <p class="chapter">Chapter 3</p>
+      <h2>At the mercy of the weather</h2>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">A wet 2025 halved the Northern Rivers harvest</h3>
+          <div id="vis7" class="vis"></div>
+          <p class="note">Macadamia crop by region, tonnes in-shell. The log scale gives equal space to every ten-fold step.</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">Yet the industry expects the crop to double by 2030</h3>
+          <div id="vis8" class="vis"></div>
+          <p class="note">Solid: actual crop. Dashed: Australian Macadamia Society forecast.</p>
+          <div class="text">
+            <p>Heavy, prolonged rain damaged crops and kept growers out of their orchards in 2025. Many growers in
+              NSW and Queensland reported their lowest crops in more than a decade. Bundaberg's young orchards were the
+              exception, producing a record harvest.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 4. EXPORTS ============================== -->
+    <section>
+      <p class="chapter">Chapter 4</p>
+      <h2>Grown here, eaten in Asia</h2>
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h3 class="chart-title">China and India buy the bulk of our almonds</h3>
+          <div id="vis9" class="vis"></div>
+          <p class="note">Top five export destinations for each nut, tonnes, year ending June 2023. Line width is proportional to volume.
+            Lines start at the main growing region (Sunraysia for almonds, Bundaberg for macadamias).</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">China leads, India holds second, Türkiye climbs</h3>
+          <div id="vis10" class="vis"></div>
+          <p class="note">Rank of the top five almond export destinations by volume. Hover a line to highlight a country.</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <div class="text">
+            <p>About four in every five tonnes of Australian almonds are exported. China has been the top buyer every
+              year, but its purchases swing sharply, from about 51,000 tonnes in 2021/22 to 34,000 tonnes in 2022/23.</p>
+            <p>India has held second place every year, while Germany dropped out of the top five and Türkiye entered it
+              in 2021/22. Spreading sales across more markets lowers the risk of relying on one buyer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 5. HOME ============================== -->
+    <section>
+      <p class="chapter">Chapter 5</p>
+      <h2>Exporting almonds, importing hazelnuts</h2>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-3">
+          <h3 class="chart-title">We sell what we grow well and buy what we don't</h3>
+          <div id="vis11" class="vis"></div>
+          <p class="note">2023/24. Left: imports as a share of domestic supply. Right: exports as a share of production
+            (macadamia figure: 2025 crop, Australian Macadamia Society).</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-3">
+          <div class="text">
+            <p>Australia is a net exporter of almonds and macadamias. For smaller crops the picture flips:
+              <strong>86% of the hazelnuts</strong> Australians eat are imported, mostly from Türkiye, and over a third of
+              our walnuts and pistachios come from overseas, mainly the United States.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 6. GLOBAL ============================== -->
+    <section>
+      <p class="chapter">Chapter 6</p>
+      <h2>The global race for macadamias</h2>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <h3 class="chart-title">Australia is now fourth, behind China, South Africa and Kenya</h3>
+          <div id="vis12" class="vis"></div>
+          <p class="note">Diamond: 2025 supply (where reported). Bar: forecast range for 2030. Tonnes in-shell.</p>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <div class="text conclusion">
+            <h3 class="chart-title">What next?</h3>
+            <p>The macadamia is Australia's native nut, but other countries have planted it on a huge scale. By 2030,
+              China and South Africa could each grow more than Australia's entire forecast crop.</p>
+            <p>To stay competitive, Australia's nut industry is betting on quality, new markets such as India and the
+              Middle East, and self-fertile almond varieties that rely less on hired beehives for pollination.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer>
+    <div class="page">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-2-3">
+          <h4>Data sources</h4>
+          <ul class="sources">
+            <li>Hort Innovation (2025). <a href="https://horticulture.com.au/globalassets/hort-innovation/australian-horticulture-statistics-handbook/hort-innovation-ahsh-2023-24-nuts.pdf" target="_blank">Australian Horticulture Statistics Handbook 2023/24 – Nuts</a>. Production, value, trade and state shares.</li>
+            <li>Hort Innovation (2023). <a href="https://www.horticulture.com.au/globalassets/hort-innovation/australian-horticulture-statistics-handbook/ahsh-2021-22-nuts.pdf" target="_blank">Australian Horticulture Statistics Handbook 2021/22 – Nuts</a>. Almond production and exports, 2020–2021.</li>
+            <li>Almond Board of Australia (2020). <a href="https://selectharvests.com.au/documents/2020_Almond_Insights_Final.pdf" target="_blank">Almond Insights 2019/20</a>. Production 2009–2019 and plantings by year.</li>
+            <li>Almond Board of Australia, via FreshPlaza (2025, 2026). <a href="https://www.freshplaza.com/oceania/article/9759338/australian-almond-production-hits-record-2024-25/" target="_blank">2024/25 crop</a>;
+              <a href="https://www.freshplaza.com/oceania/article/9854771/self-fertile-almond-plantings-increase-across-australia/" target="_blank">regional plantings (LandIQ mapping)</a>.</li>
+            <li>Australian Macadamia Society. <a href="https://trade.australian-macadamias.org/wp-content/uploads/2025/12/2025-YEARBOOK-FINAL.pdf" target="_blank">2025 Yearbook</a> and
+              <a href="https://trade.australian-macadamias.org/wp-content/uploads/2024/12/2024-YEARBOOK-FINAL-2.pdf" target="_blank">2024 Yearbook</a>. Regional crops, global supply, forecasts.</li>
+            <li>Map boundaries: <a href="https://www.naturalearthdata.com/" target="_blank">Natural Earth</a> (countries);
+              <a href="https://github.com/tonywr71/GeoJson-Data" target="_blank">Australian state boundaries (ABS-derived GeoJSON)</a>, simplified with Mapshaper.</li>
+          </ul>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-3">
+          <h4>About</h4>
+          <p>Created by <strong>Shi Lynn Loh</strong> for FIT3179 Data Visualisation 2, Monash University.
+            <br>Draft for studio critique · October 2026.</p>
+          <p>Charts built with <a href="https://vega.github.io/vega-lite/" target="_blank">Vega-Lite</a>; layout with Pure.css.
+            AI tools (Claude) were used to help prepare data files, chart code and to check grammar.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
