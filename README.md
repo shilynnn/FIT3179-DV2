@@ -1,6 +1,6 @@
 # Shell Shock: How Australia Became a Nut Superpower
 
-FIT3179 Data Visualisation 2 (Semester 2, 2026), critique draft.
+FIT3179 Data Visualisation 2 (Semester 2, 2026).
 Author: Shi Lynn Loh. Volume 9: Food, Agriculture & Lifestyle (Australian focus). Topic: Australian nuts.
 
 ## View it
