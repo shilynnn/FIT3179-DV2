@@ -64,6 +64,10 @@
           }
         },
         {
+          "calculate": "toNumber(datum.nut_types)",
+          "as": "nut_types"
+        },
+        {
           "filter": "datum.nut_types > 0"
         }
       ],
@@ -90,6 +94,12 @@
               "#b8682f",
               "#7a3d17"
             ]
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "symbolSize": 160
           }
         },
         "tooltip": [
@@ -151,11 +161,16 @@
       "mark": {
         "type": "text",
         "fontWeight": 700,
-        "fontSize": 11,
-        "color": "#3b322b",
-        "opacity": 0.75
+        "fontSize": 11
       },
       "encoding": {
+        "color": {
+          "condition": {
+            "test": "indexof(['WA', 'SA', 'NSW'], datum.abbr) >= 0",
+            "value": "#fffaf3"
+          },
+          "value": "#3b322b"
+        },
         "longitude": {
           "field": "lon",
           "type": "quantitative"
